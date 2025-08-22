@@ -35,17 +35,9 @@ export async function PokemonCard({ pokemon }: PokemonCardProps) {
               data-ai-hint="pokemon image"
             />
           ) : (
-            <>
-              <Image
-                src={imageUrl}
-                alt={pokemon.name}
-                width={300}
-                height={300}
-                className="object-contain filter grayscale brightness-[30%] opacity-40"
-                data-ai-hint="pokemon silhouette"
-              />
-              <span className="absolute text-8xl font-black text-card/50 select-none">?</span>
-            </>
+            <div className="flex items-center justify-center w-full h-full">
+              <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
+            </div>
           )}
         </div>
 
