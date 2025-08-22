@@ -2,7 +2,7 @@
 
 import { simulatePokemonAvailability } from '@/ai/flows/simulate-pokemon-availability';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Pokemon } from '@/lib/pokemon';
 import { cn } from '@/lib/utils';
 import { MapPin } from 'lucide-react';
@@ -23,8 +23,10 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       const result = await simulatePokemonAvailability({ pokemonName: pokemon.name });
       setAvailability(result);
     }
-    checkAvailability();
-  }, [pokemon.name]);
+    if (pokemon.id !== 1) {
+      checkAvailability();
+    }
+  }, [pokemon.id, pokemon.name]);
 
   const isGushijie = pokemon.id === 1;
   const isFound = isGushijie || (availability?.isFound ?? false);
@@ -60,7 +62,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
             <span>立農國小第1代</span>
           </div>
           
-          {availability ? (
+          {isGushijie || availability ? (
             <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
               isFound ? "bg-green-500/90 text-primary-foreground hover:bg-green-500/80" : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
             )}>
