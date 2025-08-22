@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview Simulates Pokemon availability with a 100% chance of being 'Not Found'.
+ * @fileOverview Simulates Pokemon availability with a random chance.
  *
  * - simulatePokemonAvailability - A function that determines if a Pokemon is found or not.
  * - SimulatePokemonAvailabilityInput - The input type for the simulatePokemonAvailability function.
@@ -16,15 +16,16 @@ const SimulatePokemonAvailabilityInputSchema = z.object({
 export type SimulatePokemonAvailabilityInput = z.infer<typeof SimulatePokemonAvailabilityInputSchema>;
 
 const SimulatePokemonAvailabilityOutputSchema = z.object({
-  isFound: z.boolean().describe('Whether the Pokemon is found or not.  Always false.'),
+  isFound: z.boolean().describe('Whether the Pokemon is found or not.'),
   message: z.string().describe('A message indicating the Pokemon availability.'),
 });
 export type SimulatePokemonAvailabilityOutput = z.infer<typeof SimulatePokemonAvailabilityOutputSchema>;
 
 export async function simulatePokemonAvailability(input: SimulatePokemonAvailabilityInput): Promise<SimulatePokemonAvailabilityOutput> {
     SimulatePokemonAvailabilityInputSchema.parse(input);
+    const isFound = Math.random() > 0.5;
     return Promise.resolve({
-      isFound: false,
-      message: 'Not Found',
+      isFound,
+      message: isFound ? 'Spotted!' : 'Not Found',
     });
 }
