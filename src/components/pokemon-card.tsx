@@ -44,7 +44,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex items-center justify-center overflow-hidden">
             {isGushijie ? (
               <Image
-                src="https://photos.fife.usercontent.google.com/pw/AP1GczPpABl-VddVT1JHwdI8y4c3rzfJkm9IiFYCBKQKGdqTxJL9jiJOMJQ=w685-h913-s-no-gm?authuser=0"
+                src="https://storage.googleapis.com/genkit-assets/images/gushijie.jpg"
                 alt="顧士傑"
                 width={300}
                 height={300}
