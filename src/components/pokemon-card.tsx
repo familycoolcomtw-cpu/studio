@@ -1,10 +1,12 @@
-import Image from 'next/image';
+'use client';
+
 import { simulatePokemonAvailability } from '@/ai/flows/simulate-pokemon-availability';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Pokemon } from '@/lib/pokemon';
-import { MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 type PokemonCardProps = {
   pokemon: Pokemon;
@@ -12,8 +14,16 @@ type PokemonCardProps = {
 
 const formatDexNumber = (id: number) => String(id).padStart(3, '0');
 
-export async function PokemonCard({ pokemon }: PokemonCardProps) {
-  const availability = await simulatePokemonAvailability({ pokemonName: pokemon.name });
+export function PokemonCard({ pokemon }: PokemonCardProps) {
+  const [availability, setAvailability] = useState<{ isFound: boolean; message: string } | null>(null);
+
+  useEffect(() => {
+    async function checkAvailability() {
+      const result = await simulatePokemonAvailability({ pokemonName: pokemon.name });
+      setAvailability(result);
+    }
+    checkAvailability();
+  }, [pokemon.name]);
   
   return (
     <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
@@ -34,13 +44,15 @@ export async function PokemonCard({ pokemon }: PokemonCardProps) {
             <span>立農國小第1代</span>
           </div>
           
-          <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
-            availability.isFound 
-              ? "bg-accent text-accent-foreground hover:bg-accent/90 border-accent-foreground/20" 
-              : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
-          )}>
-            {availability.message}
-          </Badge>
+          {availability ? (
+            <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
+              "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            )}>
+              {availability.message}
+            </Badge>
+          ) : (
+            <div className="h-9 w-full animate-pulse rounded-full bg-muted" />
+          )}
           
         </div>
       </CardContent>
