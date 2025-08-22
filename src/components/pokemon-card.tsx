@@ -25,20 +25,9 @@ export async function PokemonCard({ pokemon }: PokemonCardProps) {
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-4 flex-grow">
         <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex items-center justify-center overflow-hidden">
-          {availability.isFound ? (
-            <Image
-              src={imageUrl}
-              alt={pokemon.name}
-              width={300}
-              height={300}
-              className="object-contain"
-              data-ai-hint="pokemon image"
-            />
-          ) : (
-            <div className="flex items-center justify-center w-full h-full">
-              <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
-            </div>
-          )}
+          <div className="flex items-center justify-center w-full h-full">
+            <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
+          </div>
         </div>
 
         <div className="w-full flex flex-col gap-3 mt-auto pt-4">
