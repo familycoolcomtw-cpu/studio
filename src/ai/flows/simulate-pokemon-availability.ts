@@ -26,6 +26,6 @@ export async function simulatePokemonAvailability(input: SimulatePokemonAvailabi
     const isFound = Math.random() > 0.5;
     return Promise.resolve({
       isFound,
-      message: isFound ? 'Spotted!' : 'Not Found',
+      message: isFound ? 'Not Found' : 'Not Found',
     });
 }
