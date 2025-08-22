@@ -37,7 +37,7 @@ export async function PokemonCard({ pokemon }: PokemonCardProps) {
           <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
             availability.isFound 
               ? "bg-accent text-accent-foreground hover:bg-accent/90 border-accent-foreground/20" 
-              : "bg-muted text-muted-foreground border-border"
+              : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
           )}>
             {availability.message}
           </Badge>
