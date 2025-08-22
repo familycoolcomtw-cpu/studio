@@ -7,6 +7,7 @@ import type { Pokemon } from '@/lib/pokemon';
 import { cn } from '@/lib/utils';
 import { MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 type PokemonCardProps = {
   pokemon: Pokemon;
@@ -24,6 +25,10 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     }
     checkAvailability();
   }, [pokemon.name]);
+
+  const isGushijie = pokemon.id === 1;
+  const isFound = isGushijie || (availability?.isFound ?? false);
+  const message = isGushijie ? 'Founded' : (availability?.message ?? '...');
   
   return (
     <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
@@ -35,7 +40,18 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-4 flex-grow">
         <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex items-center justify-center overflow-hidden">
-            <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
+            {isGushijie ? (
+              <Image
+                src="https://storage.googleapis.com/genkit-assets/images/gushijie.jpg"
+                alt="顧士傑"
+                width={300}
+                height={300}
+                className="object-cover w-full h-full"
+                data-ai-hint="person photo"
+              />
+            ) : (
+              <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
+            )}
         </div>
 
         <div className="w-full flex flex-col gap-3 mt-auto pt-4">
@@ -46,9 +62,9 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
           
           {availability ? (
             <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
-              "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              isFound ? "bg-green-500/90 text-primary-foreground hover:bg-green-500/80" : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
             )}>
-              {availability.message}
+              {message}
             </Badge>
           ) : (
             <div className="h-9 w-full animate-pulse rounded-full bg-muted" />
