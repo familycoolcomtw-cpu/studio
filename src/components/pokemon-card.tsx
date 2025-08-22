@@ -9,7 +9,7 @@ type PokemonCardProps = {
   pokemon: Pokemon;
 };
 
-const formatDexNumber = (id: number) => `#${String(id).padStart(3, '0')}`;
+const formatDexNumber = (id: number) => String(id).padStart(3, '0');
 
 export async function PokemonCard({ pokemon }: PokemonCardProps) {
   const availability = await simulatePokemonAvailability({ pokemonName: pokemon.name });
