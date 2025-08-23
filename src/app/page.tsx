@@ -10,6 +10,7 @@ export default function Home() {
 
   const foundCount = greenLightPokemonIds.length;
   const lookedCount = yellowLightPokemonIds.length;
+  const totalLookedCount = foundCount + lookedCount;
 
   return (
     <div className="min-h-screen bg-background text-foreground" id="page-top">
@@ -31,7 +32,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-2 text-yellow-500 font-semibold">
             <Eye className="h-6 w-6" />
-            <span>已目擊: {lookedCount}</span>
+            <span>已目擊: {totalLookedCount}</span>
           </div>
         </div>
       </header>
