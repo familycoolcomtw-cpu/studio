@@ -29,8 +29,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   }, [pokemon.id, pokemon.name]);
 
   const isGushijie = pokemon.id === 1;
-  const isFound = isGushijie || (availability?.isFound ?? false);
-  const message = isGushijie ? 'Founded' : (availability?.message ?? '...');
+  const isFound = isGushijie ? true : false;
+  const message = isGushijie ? 'Founded' : 'Not Found';
   
   return (
     <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
@@ -44,7 +44,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex items-center justify-center overflow-hidden">
             {isGushijie ? (
               <Image
-                src="https://storage.googleapis.com/genkit-assets/images/gushijie.jpg"
+                src="/home/user/studio/IMG_20200727_114729.jpg"
                 alt="顧士傑"
                 width={300}
                 height={300}
@@ -62,15 +62,11 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
             <span>立農國小第1代</span>
           </div>
           
-          {isGushijie || availability ? (
-            <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
-              isFound ? "bg-green-500/90 text-primary-foreground hover:bg-green-500/80" : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            )}>
-              {message}
-            </Badge>
-          ) : (
-            <div className="h-9 w-full animate-pulse rounded-full bg-muted" />
-          )}
+          <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 
+            isFound ? "bg-green-500/90 text-primary-foreground hover:bg-green-500/80" : "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+          )}>
+            {message}
+          </Badge>
           
         </div>
       </CardContent>
