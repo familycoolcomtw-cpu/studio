@@ -14,6 +14,22 @@ type PokemonCardProps = {
 
 const formatDexNumber = (id: number) => String(id).padStart(3, '0');
 
+const coloredUserIconIds = [2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
+const colors = [
+  'text-red-500',
+  'text-green-500',
+  'text-blue-500',
+  'text-yellow-500',
+  'text-purple-500',
+  'text-pink-500',
+  'text-indigo-500',
+  'text-teal-500',
+];
+
+const getColorForId = (id: number) => {
+  return colors[id % colors.length];
+};
+
 export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ isFound: boolean; message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,6 +76,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const isGushijie = pokemon.id === 1;
   const isFound = availability?.isFound;
   const message = availability?.message || 'Not Found';
+  const showColoredUserIcon = coloredUserIconIds.includes(pokemon.id);
   
   return (
     <Card className={cn(
@@ -86,6 +103,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
                   <p>原因: 需要購買firebase儲存空間後再試</p>
                 </div>
               </>
+            ) : showColoredUserIcon ? (
+              <User className={cn("w-24 h-24", getColorForId(pokemon.id))} />
             ) : (
               <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
             )}
