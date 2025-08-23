@@ -17,7 +17,7 @@ export default function Home() {
       <header className="py-8 px-4">
         <div className="flex justify-center items-center gap-4 mb-2 relative">
           <PokeTrackerLogo className="h-16 w-16 text-primary" />
-          <h1 className="text-5xl font-bold font-headline text-primary">PokeTracker</h1>
+          <h1 className="text-5xl font-bold font-headline text-primary">家庭圖鑑</h1>
           <a href="#page-top" className="absolute right-4 top-1/2 -translate-y-1/2">
             <Button variant="outline" size="lg" className="text-lg bg-accent text-accent-foreground hover:bg-accent/90">
               <ArrowUpCircle className="mr-2 h-5 w-5" />

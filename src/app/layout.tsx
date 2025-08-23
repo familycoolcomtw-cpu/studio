@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'PokeTracker',
+  title: '家庭圖鑑',
   description: 'A Pokémon GO style Pokédex for Generation 1.',
 };
 
