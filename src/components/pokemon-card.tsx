@@ -103,6 +103,18 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   };
   const colorClass = isColorful ? colors[pokemon.id] : '';
 
+  const getGenerationTag = (id: number) => {
+    if (id >= 1 && id <= 100) return '立農國小第1代';
+    if (id >= 101 && id <= 240) return '立農國小第2代';
+    if (id >= 241 && id <= 391) return '立農國小第3代';
+    if (id >= 392 && id <= 540) return '立農國小第4代';
+    if (id >= 541 && id <= 640) return '百齡國中第5代';
+    if (id >= 641 && id <= 720) return '百齡國中第6代';
+    if (id >= 721 && id <= 840) return '百齡國中第7代';
+    if (id >= 841 && id <= 1000) return '五常國中第8代';
+    return '';
+  };
+
   return (
     <Card className={cn(
       "transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm h-full"
@@ -131,7 +143,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         <div className="w-full flex flex-col gap-3 mt-auto pt-4">
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <MapPin className="w-4 h-4" />
-            <span>立農國小第1代</span>
+            <span>{getGenerationTag(pokemon.id)}</span>
           </div>
           
           <Badge className={cn("w-full justify-center py-2 text-base font-semibold border", 

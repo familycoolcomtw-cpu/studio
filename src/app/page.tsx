@@ -44,6 +44,30 @@ export default function Home() {
                 立農國小第4代
               </Button>
             </a>
+            <a href="#pokemon-541">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
+                <ArrowUpCircle className="mr-2 h-4 w-4" />
+                百齡國中第5代
+              </Button>
+            </a>
+            <a href="#pokemon-641">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
+                <ArrowUpCircle className="mr-2 h-4 w-4" />
+                百齡國中第6代
+              </Button>
+            </a>
+            <a href="#pokemon-721">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
+                <ArrowUpCircle className="mr-2 h-4 w-4" />
+                百齡國中第7代
+              </Button>
+            </a>
+            <a href="#pokemon-841">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
+                <ArrowUpCircle className="mr-2 h-4 w-4" />
+                五常國中第8代
+              </Button>
+            </a>
         </div>
         <div className="flex justify-center items-center gap-6 mt-4 text-lg">
           <div className="flex items-center gap-2 text-green-500 font-semibold">
