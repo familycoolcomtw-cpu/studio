@@ -25,9 +25,9 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   useEffect(() => {
     async function checkAvailability() {
       if (greenLightPokemonIds.includes(pokemon.id)) {
-        setAvailability({ status: 'found', message: 'Founded' });
+        setAvailability({ status: 'found', message: '已找到' });
       } else if (yellowLightPokemonIds.includes(pokemon.id)) {
-        setAvailability({ status: 'looked', message: 'Looked' });
+        setAvailability({ status: 'looked', message: '已目擊' });
       } else {
         const result = await simulatePokemonAvailability({ pokemonName: pokemon.name, pokemonId: pokemon.id });
         setAvailability({ status: result.isFound ? 'found' : 'not-found', message: result.message });
@@ -63,7 +63,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
 
   const isGushijie = pokemon.id === 1;
   const status = availability?.status;
-  const message = availability?.message || 'Not Found';
+  const message = availability?.message || '未找到';
   
   const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);

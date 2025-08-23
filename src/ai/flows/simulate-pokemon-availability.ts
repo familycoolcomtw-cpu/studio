@@ -27,6 +27,6 @@ export async function simulatePokemonAvailability(input: SimulatePokemonAvailabi
     const isFound = input.pokemonId === 1;
     return Promise.resolve({
       isFound,
-      message: isFound ? 'Founded' : 'Not Found',
+      message: isFound ? '已找到' : '未找到',
     });
 }
