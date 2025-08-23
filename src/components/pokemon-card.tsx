@@ -56,11 +56,14 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   }
 
   const isGushijie = pokemon.id === 1;
-  const isFound = isGushijie || availability?.isFound;
+  const isFound = isGushijie || (availability?.isFound && pokemon.id !== 1 ? false : availability?.isFound);
   const message = isGushijie ? 'Founded' : (availability?.message || 'Not Found');
   
   return (
-    <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
+    <Card className={cn(
+      "transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm",
+      isGushijie && "bg-sky-200"
+    )}>
       <CardHeader>
         <div className="flex justify-between items-start">
           <CardTitle className="text-xl font-bold capitalize">{pokemon.name}</CardTitle>
