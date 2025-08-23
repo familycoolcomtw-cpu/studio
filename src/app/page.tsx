@@ -15,35 +15,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground" id="page-top">
       <header className="py-8 px-4">
-        <div className="flex justify-center items-center gap-4 mb-2 relative">
+        <div className="flex justify-center items-center gap-4 mb-4">
           <PokeTrackerLogo className="h-16 w-16 text-primary" />
           <h1 className="text-5xl font-bold font-headline text-primary">家庭圖鑑</h1>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+        </div>
+        <div className="flex justify-center flex-wrap gap-2 mb-4">
             <a href="#pokemon-1">
-              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
                 <ArrowUpCircle className="mr-2 h-4 w-4" />
                 立農國小第1代
               </Button>
             </a>
             <a href="#pokemon-101">
-              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
                 <ArrowUpCircle className="mr-2 h-4 w-4" />
                 立農國小第2代
               </Button>
             </a>
             <a href="#pokemon-241">
-              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
                 <ArrowUpCircle className="mr-2 h-4 w-4" />
                 立農國小第3代
               </Button>
             </a>
             <a href="#pokemon-392">
-              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button variant="outline" size="sm" className="text-sm bg-accent text-accent-foreground hover:bg-accent/90">
                 <ArrowUpCircle className="mr-2 h-4 w-4" />
                 立農國小第4代
               </Button>
             </a>
-          </div>
         </div>
         <div className="flex justify-center items-center gap-6 mt-4 text-lg">
           <div className="flex items-center gap-2 text-green-500 font-semibold">
