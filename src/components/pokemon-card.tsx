@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Pokemon } from '@/lib/pokemon';
 import { cn } from '@/lib/utils';
-import { MapPin, User } from 'lucide-react';
+import { MapPin, User, Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 type PokemonCardProps = {
@@ -16,20 +16,48 @@ const formatDexNumber = (id: number) => String(id).padStart(3, '0');
 
 export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ isFound: boolean; message: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function checkAvailability() {
-      const result = await simulatePokemonAvailability({ pokemonName: pokemon.name });
-      setAvailability(result);
+      if (pokemon.id === 1) {
+        setAvailability({ isFound: true, message: 'Founded' });
+      } else {
+        const result = await simulatePokemonAvailability({ pokemonName: pokemon.name });
+        setAvailability(result);
+      }
     }
-    if (pokemon.id !== 1) {
+
+    const timer = setTimeout(() => {
       checkAvailability();
-    }
+      setIsLoading(false);
+    }, 1000); // Simulate loading for 1 second
+
+    return () => clearTimeout(timer);
   }, [pokemon.id, pokemon.name]);
 
+  if (isLoading) {
+    return (
+        <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
+        <CardHeader>
+          <div className="flex justify-between items-start">
+            <CardTitle className="text-xl font-bold capitalize">{pokemon.name}</CardTitle>
+            <CardDescription className="text-lg font-mono text-muted-foreground">{formatDexNumber(pokemon.id)}</CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center justify-center gap-4 flex-grow">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground">
+            <Loader className="w-6 h-6 animate-spin" />
+            <span>載入中...</span>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   const isGushijie = pokemon.id === 1;
-  const isFound = isGushijie ? true : false;
-  const message = isGushijie ? 'Founded' : 'Not Found';
+  const isFound = isGushijie || availability?.isFound;
+  const message = isGushijie ? 'Founded' : (availability?.message || 'Not Found');
   
   return (
     <Card className="transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm">
