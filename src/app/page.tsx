@@ -20,7 +20,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="text-center py-6 text-muted-foreground text-sm">
-        <p>Gotta find 'em all! Or not.</p>
+        <p>看完所有的內容，稍後會在發行新一代的圖鑑</p>
       </footer>
     </div>
   );
