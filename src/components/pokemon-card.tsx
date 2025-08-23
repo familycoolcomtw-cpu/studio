@@ -61,6 +61,21 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const isFound = availability?.isFound;
   const message = availability?.message || 'Not Found';
   
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
+  const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
+  const colors = [
+    'bg-red-500',
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-yellow-500',
+    'bg-indigo-500',
+    'bg-purple-500',
+    'bg-pink-500',
+    'bg-teal-500',
+    'bg-orange-500'
+  ];
+  const colorClass = isColorful ? colors[pokemon.id % colors.length] : '';
+
   return (
     <Card className={cn(
       "transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm"
@@ -75,7 +90,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         <div 
           className={cn(
             "relative w-48 h-48 rounded-lg flex flex-col items-center justify-center overflow-hidden text-center",
-            isGushijie ? "bg-[#00BFFF]" : "bg-muted/30"
+            isGushijie ? "bg-[#00BFFF]" : "bg-muted/30",
+            isColorful && colorClass
           )}
         >
             {isGushijie ? (
@@ -86,6 +102,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
                   <p>原因: 需要購買firebase儲存空間後再試</p>
                 </div>
               </>
+            ) : isColorful ? (
+              <User className="w-24 h-24 text-white" />
             ) : (
               <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
             )}
