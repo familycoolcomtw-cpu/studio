@@ -65,9 +65,10 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const status = availability?.status;
   const message = availability?.message || '未找到';
   
-  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450, 116, 157, 176, 183, 187, 217, 222];
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
   const showUserIcon = yellowLightPokemonIds.includes(pokemon.id) || greenLightPokemonIds.includes(pokemon.id);
+  const showUserIconWithoutBg = yellowLightPokemonIds.includes(pokemon.id);
 
   const colors: { [key: number]: string } = {
     2: 'bg-[#48D1CC]',
@@ -95,15 +96,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     91: 'bg-orange-500',
     92: 'bg-red-500',
     95: 'bg-blue-500',
-    116: 'bg-indigo-500',
-    157: 'bg-gray-500',
-    176: 'bg-rose-500',
-    183: 'bg-fuchsia-500',
-    187: 'bg-sky-500',
     206: 'bg-lime-500',
     208: 'bg-cyan-500',
-    217: 'bg-violet-500',
-    222: 'bg-pink-400',
     263: 'bg-emerald-500',
     450: 'bg-amber-500',
   };
@@ -123,14 +117,12 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         <div 
           className={cn(
             "relative w-48 h-48 rounded-lg flex flex-col items-center justify-center overflow-hidden text-center",
-            isGushijie ? "bg-[#00BFFF]" : "bg-muted/30",
+            showUserIconWithoutBg ? "" : (isGushijie ? "bg-[#00BFFF]" : "bg-muted/30"),
             isColorful && colorClass
           )}
         >
-            {isGushijie ? (
-              <User className="w-24 h-24 text-white" />
-            ) : showUserIcon ? (
-              <User className="w-24 h-24 text-white" />
+            {showUserIcon ? (
+              <User className={cn("w-24 h-24", showUserIconWithoutBg ? "text-foreground" : "text-white")} />
             ) : (
               <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
             )}
