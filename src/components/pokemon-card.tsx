@@ -100,7 +100,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
 
   return (
     <Card className={cn(
-      "transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm"
+      "transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col bg-card/80 backdrop-blur-sm h-full"
     )}>
       <CardHeader>
         <div className="flex justify-between items-start">
