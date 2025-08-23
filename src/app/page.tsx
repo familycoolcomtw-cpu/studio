@@ -6,7 +6,7 @@ import { ArrowUpCircle, CheckCircle, Eye } from 'lucide-react';
 
 export default function Home() {
   const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450, 826, 845, 846, 848, 849, 853, 857, 859, 875, 876, 877, 878, 879, 880, 913, 914, 921, 924, 941, 942, 947, 948, 965, 967, 968, 971, 972, 973, 975, 976, 977, 978, 998, 1000];
-  const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85, 116, 157, 176, 183, 187, 217, 222];
+  const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85, 116, 157, 176, 183, 187, 217, 222, 828, 943, 957, 958];
 
   const foundCount = greenLightPokemonIds.length;
   const lookedCount = yellowLightPokemonIds.length;
