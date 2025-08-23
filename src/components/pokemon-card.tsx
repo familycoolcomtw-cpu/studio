@@ -19,7 +19,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ isFound: boolean; message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 41, 45, 75, 86, 91, 92, 95];
 
   useEffect(() => {
     async function checkAvailability() {
@@ -62,7 +62,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const isFound = availability?.isFound;
   const message = availability?.message || 'Not Found';
   
-  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 41, 45, 75, 86, 91, 92, 95];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
   const colors: { [key: number]: string } = {
     2: 'bg-[#48D1CC]',
@@ -71,9 +71,19 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     5: 'bg-[#1E90FF]',
     8: 'bg-[#00FFFF]',
     9: 'bg-[#008B8B]',
+    10: 'bg-[#FFD700]',
     11: 'bg-[#32CD32]',
+    12: 'bg-[#FF69B4]',
+    15: 'bg-[#8A2BE2]',
+    16: 'bg-[#A52A2A]',
     24: 'bg-[#BA55D3]',
+    28: 'bg-[#6A5ACD]',
     31: 'bg-[#DEB887]',
+    32: 'bg-[#F0E68C]',
+    33: 'bg-[#7FFF00]',
+    41: 'bg-[#D2691E]',
+    45: 'bg-[#FF7F50]',
+    75: 'bg-[#6495ED]',
     86: 'bg-teal-500',
     91: 'bg-orange-500',
     92: 'bg-red-500',
