@@ -19,7 +19,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ status: 'found' | 'not-found' | 'looked', message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450];
   const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85];
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const status = availability?.status;
   const message = availability?.message || '未找到';
   
-  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
   const showUserIcon = yellowLightPokemonIds.includes(pokemon.id) || colorfulBgPokemonIds.includes(pokemon.id);
 
@@ -94,7 +94,11 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     86: 'bg-teal-500',
     91: 'bg-orange-500',
     92: 'bg-red-500',
-    95: 'bg-blue-500'
+    95: 'bg-blue-500',
+    206: 'bg-lime-500',
+    208: 'bg-cyan-500',
+    263: 'bg-emerald-500',
+    450: 'bg-amber-500',
   };
   const colorClass = isColorful ? colors[pokemon.id] : '';
 
