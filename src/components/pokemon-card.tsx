@@ -19,7 +19,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ status: 'found' | 'not-found' | 'looked', message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 41, 45, 75, 86, 91, 92, 95];
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
   const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 84, 85];
 
   useEffect(() => {
@@ -65,9 +65,9 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const status = availability?.status;
   const message = availability?.message || 'Not Found';
   
-  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 41, 45, 75, 86, 91, 92, 95];
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
-  const showUserIcon = yellowLightPokemonIds.includes(pokemon.id);
+  const showUserIcon = yellowLightPokemonIds.includes(pokemon.id) || colorfulBgPokemonIds.includes(pokemon.id);
 
   const colors: { [key: number]: string } = {
     2: 'bg-[#48D1CC]',
@@ -86,9 +86,11 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     31: 'bg-[#DEB887]',
     32: 'bg-[#FFD700]',
     33: 'bg-[#ADFF2F]',
+    35: 'bg-purple-500',
     41: 'bg-[#00008B]',
     45: 'bg-[#FF7F50]',
     75: 'bg-[#6495ED]',
+    80: 'bg-pink-500',
     86: 'bg-teal-500',
     91: 'bg-orange-500',
     92: 'bg-red-500',
@@ -116,10 +118,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         >
             {isGushijie ? (
               <User className="w-24 h-24 text-white" />
-            ) : isColorful ? (
-              <User className="w-24 h-24 text-white" />
             ) : showUserIcon ? (
-              <User className="w-24 h-24 text-muted-foreground" />
+              <User className="w-24 h-24 text-white" />
             ) : (
               <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
             )}
