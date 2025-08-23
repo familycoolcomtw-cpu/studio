@@ -951,7 +951,7 @@ export const generation1: Pokemon[] = [
   { id: 945, name: '?????' },
   { id: 946, name: '?????' },
   { id: 947, name: '凡荀' },
-  { id: 948, name: '?????' },
+  { id: 948, name: '凡荀媽媽' },
   { id: 949, name: '?????' },
   { id: 950, name: '?????' },
   { id: 951, name: '陳羿安' },
