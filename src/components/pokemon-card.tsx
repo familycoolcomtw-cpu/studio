@@ -70,11 +70,16 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
         </div>
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-4 flex-grow">
-        <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex flex-col items-center justify-center overflow-hidden text-center">
+        <div 
+          className={cn(
+            "relative w-48 h-48 rounded-lg flex flex-col items-center justify-center overflow-hidden text-center",
+            isGushijie ? "bg-[#00BFFF]" : "bg-muted/30"
+          )}
+        >
             {isGushijie ? (
               <>
-                <User className="w-24 h-24 text-muted-foreground" />
-                <div className="mt-2 text-xs text-muted-foreground">
+                <User className="w-24 h-24 text-white" />
+                <div className="mt-2 text-xs text-white">
                   <p>無法顯示影像</p>
                   <p>原因: 需要購買firebase儲存空間後再試</p>
                 </div>
