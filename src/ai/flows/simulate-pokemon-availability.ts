@@ -12,6 +12,7 @@ import {z} from 'zod';
 
 const SimulatePokemonAvailabilityInputSchema = z.object({
   pokemonName: z.string().describe('The name of the Pokemon to check availability for.'),
+  pokemonId: z.number().describe('The ID of the Pokemon to check availability for.'),
 });
 export type SimulatePokemonAvailabilityInput = z.infer<typeof SimulatePokemonAvailabilityInputSchema>;
 
@@ -23,9 +24,9 @@ export type SimulatePokemonAvailabilityOutput = z.infer<typeof SimulatePokemonAv
 
 export async function simulatePokemonAvailability(input: SimulatePokemonAvailabilityInput): Promise<SimulatePokemonAvailabilityOutput> {
     SimulatePokemonAvailabilityInputSchema.parse(input);
-    const isFound = Math.random() > 0.5;
+    const isFound = input.pokemonId === 1;
     return Promise.resolve({
       isFound,
-      message: isFound ? 'Not Found' : 'Not Found',
+      message: isFound ? 'Founded' : 'Not Found',
     });
 }

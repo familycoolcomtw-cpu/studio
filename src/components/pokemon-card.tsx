@@ -23,7 +23,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       if (pokemon.id === 1) {
         setAvailability({ isFound: true, message: 'Founded' });
       } else {
-        const result = await simulatePokemonAvailability({ pokemonName: pokemon.name });
+        const result = await simulatePokemonAvailability({ pokemonName: pokemon.name, pokemonId: pokemon.id });
         setAvailability(result);
       }
     }
