@@ -19,7 +19,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ status: 'found' | 'not-found' | 'looked', message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450];
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450, 845, 846, 848, 849, 857, 859, 875, 876, 877, 878, 879, 880, 913, 914, 921, 924, 941, 942, 947, 948, 965, 967, 968, 971, 972, 973, 975, 976, 977, 978, 998, 1000];
   const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85, 116, 157, 176, 183, 187, 217, 222];
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const status = availability?.status;
   const message = availability?.message || '未找到';
   
-  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450];
+  const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95, 206, 208, 263, 450, 845, 846, 848, 849, 857, 859, 875, 876, 877, 878, 879, 880, 913, 914, 921, 924, 941, 942, 947, 948, 965, 967, 968, 971, 972, 973, 975, 976, 977, 978, 998, 1000];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
   const showUserIcon = yellowLightPokemonIds.includes(pokemon.id) || greenLightPokemonIds.includes(pokemon.id);
   const showUserIconWithoutBg = yellowLightPokemonIds.includes(pokemon.id);
@@ -100,6 +100,38 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
     208: 'bg-cyan-500',
     263: 'bg-emerald-500',
     450: 'bg-amber-500',
+    845: 'bg-red-400',
+    846: 'bg-orange-400',
+    848: 'bg-yellow-400',
+    849: 'bg-lime-400',
+    857: 'bg-green-400',
+    859: 'bg-teal-400',
+    875: 'bg-cyan-400',
+    876: 'bg-sky-400',
+    877: 'bg-blue-400',
+    878: 'bg-indigo-400',
+    879: 'bg-purple-400',
+    880: 'bg-fuchsia-400',
+    913: 'bg-pink-400',
+    914: 'bg-rose-400',
+    921: 'bg-red-500',
+    924: 'bg-orange-500',
+    941: 'bg-yellow-500',
+    942: 'bg-lime-500',
+    947: 'bg-green-500',
+    948: 'bg-teal-500',
+    965: 'bg-cyan-500',
+    967: 'bg-sky-500',
+    968: 'bg-blue-500',
+    971: 'bg-indigo-500',
+    972: 'bg-purple-500',
+    973: 'bg-fuchsia-500',
+    975: 'bg-pink-500',
+    976: 'bg-rose-500',
+    977: 'bg-red-600',
+    978: 'bg-orange-600',
+    998: 'bg-yellow-600',
+    1000: 'bg-lime-600',
   };
   const colorClass = isColorful ? colors[pokemon.id] : '';
 
