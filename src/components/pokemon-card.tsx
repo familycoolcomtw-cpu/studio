@@ -18,9 +18,11 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [availability, setAvailability] = useState<{ isFound: boolean; message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
+
   useEffect(() => {
     async function checkAvailability() {
-      if (pokemon.id === 1) {
+      if (greenLightPokemonIds.includes(pokemon.id)) {
         setAvailability({ isFound: true, message: 'Founded' });
       } else {
         const result = await simulatePokemonAvailability({ pokemonName: pokemon.name, pokemonId: pokemon.id });
@@ -56,8 +58,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   }
 
   const isGushijie = pokemon.id === 1;
-  const isFound = isGushijie || (availability?.isFound && pokemon.id !== 1 ? false : availability?.isFound);
-  const message = isGushijie ? 'Founded' : (availability?.message || 'Not Found');
+  const isFound = availability?.isFound;
+  const message = availability?.message || 'Not Found';
   
   return (
     <Card className={cn(
