@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground" id="page-top">
-      <header className="py-8 px-4">
+      <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm py-4 px-4 shadow-md">
         <div className="flex justify-center items-center gap-4 mb-4">
           <PokeTrackerLogo className="h-16 w-16 text-primary" />
           <h1 className="text-5xl font-bold font-headline text-primary">家庭圖鑑</h1>
@@ -59,7 +59,7 @@ export default function Home() {
       <main className="p-4 md:p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {generation1.map((pokemon) => (
-            <div key={pokemon.id} id={`pokemon-${pokemon.id}`} className="scroll-mt-24">
+            <div key={pokemon.id} id={`pokemon-${pokemon.id}`} className="scroll-mt-48">
               <PokemonCard pokemon={pokemon} />
             </div>
           ))}
