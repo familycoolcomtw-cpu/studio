@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Pokemon } from '@/lib/pokemon';
 import { cn } from '@/lib/utils';
-import { MapPin } from 'lucide-react';
+import { MapPin, User } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -43,14 +43,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       <CardContent className="flex flex-col items-center gap-4 flex-grow">
         <div className="relative w-48 h-48 bg-muted/30 rounded-lg flex items-center justify-center overflow-hidden">
             {isGushijie ? (
-              <Image
-                src="/home/user/studio/IMG_20200727_114729.jpg"
-                alt="顧士傑"
-                width={300}
-                height={300}
-                className="object-cover w-full h-full"
-                data-ai-hint="person photo"
-              />
+              <User className="w-24 h-24 text-muted-foreground" />
             ) : (
               <span className="text-5xl font-bold text-muted-foreground">{formatDexNumber(pokemon.id)}</span>
             )}
