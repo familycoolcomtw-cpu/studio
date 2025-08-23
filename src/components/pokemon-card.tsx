@@ -100,7 +100,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
           )}
         >
             {isGushijie ? (
-              <Image src="https://placehold.co/192x192.png" alt="A 20-year-old male" width={192} height={192} className="object-cover" data-ai-hint="male person" />
+              <User className="w-24 h-24 text-white" />
             ) : isColorful ? (
               <User className="w-24 h-24 text-white" />
             ) : (
