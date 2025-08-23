@@ -63,18 +63,22 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   
   const colorfulBgPokemonIds = [2, 3, 4, 5, 8, 9, 11, 24, 31, 86, 91, 92, 95];
   const isColorful = colorfulBgPokemonIds.includes(pokemon.id);
-  const colors = [
-    'bg-red-500',
-    'bg-blue-500',
-    'bg-green-500',
-    'bg-yellow-500',
-    'bg-indigo-500',
-    'bg-purple-500',
-    'bg-pink-500',
-    'bg-teal-500',
-    'bg-orange-500'
-  ];
-  const colorClass = isColorful ? colors[pokemon.id % colors.length] : '';
+  const colors: { [key: number]: string } = {
+    2: 'bg-[#48D1CC]',
+    3: 'bg-[#FF4500]',
+    4: 'bg-[#006400]',
+    5: 'bg-[#1E90FF]',
+    8: 'bg-[#00FFFF]',
+    9: 'bg-[#008B8B]',
+    11: 'bg-[#32CD32]',
+    24: 'bg-[#BA55D3]',
+    31: 'bg-[#DEB887]',
+    86: 'bg-teal-500',
+    91: 'bg-orange-500',
+    92: 'bg-red-500',
+    95: 'bg-blue-500'
+  };
+  const colorClass = isColorful ? colors[pokemon.id] : '';
 
   return (
     <Card className={cn(
