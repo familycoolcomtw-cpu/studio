@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import type { Pokemon } from '@/lib/pokemon';
 import { cn } from '@/lib/utils';
 import { MapPin, User, Loader } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 type PokemonCardProps = {
@@ -99,13 +100,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
           )}
         >
             {isGushijie ? (
-              <>
-                <User className="w-24 h-24 text-white" />
-                <div className="mt-2 text-xs text-white">
-                  <p>無法顯示影像</p>
-                  <p>原因: 需要購買firebase儲存空間後再試</p>
-                </div>
-              </>
+              <Image src="https://placehold.co/192x192.png" alt="A 20-year-old male" width={192} height={192} className="object-cover" data-ai-hint="male person" />
             ) : isColorful ? (
               <User className="w-24 h-24 text-white" />
             ) : (
