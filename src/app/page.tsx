@@ -2,9 +2,15 @@ import { generation1 } from '@/lib/pokemon';
 import { PokemonCard } from '@/components/pokemon-card';
 import { PokeTrackerLogo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
-import { ArrowUpCircle } from 'lucide-react';
+import { ArrowUpCircle, CheckCircle, Eye } from 'lucide-react';
 
 export default function Home() {
+  const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
+  const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85];
+
+  const foundCount = greenLightPokemonIds.length;
+  const lookedCount = yellowLightPokemonIds.length;
+
   return (
     <div className="min-h-screen bg-background text-foreground" id="page-top">
       <header className="py-8 px-4">
@@ -17,6 +23,16 @@ export default function Home() {
               立農國小第1代
             </Button>
           </a>
+        </div>
+        <div className="flex justify-center items-center gap-6 mt-4 text-lg">
+          <div className="flex items-center gap-2 text-green-500 font-semibold">
+            <CheckCircle className="h-6 w-6" />
+            <span>已找到: {foundCount}</span>
+          </div>
+          <div className="flex items-center gap-2 text-yellow-500 font-semibold">
+            <Eye className="h-6 w-6" />
+            <span>已目擊: {lookedCount}</span>
+          </div>
         </div>
       </header>
       <main className="p-4 md:p-8">
