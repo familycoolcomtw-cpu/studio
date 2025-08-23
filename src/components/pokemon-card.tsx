@@ -20,7 +20,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   const greenLightPokemonIds = [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 15, 16, 24, 28, 31, 32, 33, 35, 41, 45, 75, 80, 86, 91, 92, 95];
-  const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 84, 85];
+  const yellowLightPokemonIds = [44, 57, 58, 62, 68, 69, 70, 79, 84, 85];
 
   useEffect(() => {
     async function checkAvailability() {
